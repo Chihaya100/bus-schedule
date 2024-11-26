@@ -39,8 +39,8 @@ function updateSchedule() {
     const dayOfWeek = now.getDay();
 
     // 現在の時刻と曜日を表示
-    document.getElementById("current-time").textContent = `今の時刻は ${formatTime(currentMinutes)} だよ`;
-    document.getElementById("day-of-week").textContent = `今日は ${["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"][dayOfWeek]}！！`;
+    document.getElementById("current-time").textContent = `今の時刻は${formatTime(currentMinutes)}だよ`;
+    document.getElementById("day-of-week").textContent = `今日は${["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"][dayOfWeek]}！！`;
 
     // 時刻表を選択
     const outboundSchedule = (dayOfWeek === 0 || dayOfWeek === 6) ? weekendOutboundBuses : weekdayOutboundBuses;
