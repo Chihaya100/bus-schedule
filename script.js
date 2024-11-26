@@ -20,7 +20,7 @@ const weekendOutboundBuses = calculateArrivalTimes(weekendOutboundDepartures, we
 
 // 同様に帰りの時刻表を設定（例）
 const weekdayInboundDepartures = [395, 453, 475, 485, 491, 497, 503, 510, 515, 535, 555, 575, 590, 594, 598, 602, 606, 610, 615, 635, 655, 675, 695, 710, 725, 735, 740, 750, 755, 770, 790, 805, 820, 845, 860, 880, 905, 920, 935, 950, 965, 980, 995, 1010, 1025, 1040, 1055, 1070, 1085, 1100, 1115, 1130, 1145, 1160, 1175, 1190];
-const weekendInboundDepartures = [490, 530, 560];
+const weekendInboundDepartures = [485, 513, 530, 550, 580, 610, 640, 670, 700, 730, 760, 790, 820, 850, 880, 910, 940, 970, 1000, 1030];
 const weekdayInboundDuration = 15;
 const weekendInboundDuration = 20;
 
