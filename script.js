@@ -21,8 +21,8 @@ const weekendOutboundBuses = calculateArrivalTimes(weekendOutboundDepartures, we
 // 同様に帰りの時刻表を設定（例）
 const weekdayInboundDepartures = [845, 860, 880, 905, 920, 935, 950, 965, 980, 995, 1010, 1025, 1040, 1055, 1070, 1085, 1100, 1115, 1130, 1145, 1160, 1175, 1190];
 const weekendInboundDepartures = [490, 530, 560];
-const weekdayInboundDuration = 15;
-const weekendInboundDuration = 20;
+const weekdayInboundDuration = 27;
+const weekendInboundDuration = 27;
 
 const weekdayInboundBuses = calculateArrivalTimes(weekdayInboundDepartures, weekdayInboundDuration);
 const weekendInboundBuses = calculateArrivalTimes(weekendInboundDepartures, weekendInboundDuration);
