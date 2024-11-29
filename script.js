@@ -39,7 +39,7 @@ function updateSchedule() {
     const dayOfWeek = now.getDay();
 
     // 現在の時刻と曜日を表示
-    document.getElementById("day-of-week").textContent = `Today:${["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."][dayOfWeek]}`;
+    document.getElementById("day-of-week").textContent = `Today : ${["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."][dayOfWeek]}`;
 
     // 時刻表を選択
     const outboundSchedule = (dayOfWeek === 0 || dayOfWeek === 6) ? weekendOutboundBuses : weekdayOutboundBuses;
