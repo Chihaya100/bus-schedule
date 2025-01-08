@@ -8,15 +8,41 @@
 </head>
 <body>
     <h1>Bus Schedule</h1>
+    <p id="update-message"></p>
     <p id="current-time"></p>
     <p id="day-of-week"></p>
 
-    <h2>高槻市駅　→　関西大学</h2>
-    <ul id="inbound-bus-list"></ul>
+    <div class="bus-header" data-target="inbound-bus-list">
+        <h2>高槻市駅　→　関西大学</h2>
+    </div>
+    <div class="bus-list-container">
+        <ul id="inbound-bus-list" class="bus-list"></ul>
+    </div>
 
-    <h2>関西大学　→　高槻市駅</h2>
-    <ul id="outbound-bus-list"></ul>
+    <div class="bus-header" data-target="outbound-bus-list">
+        <h2>関西大学　→　高槻市駅</h2>
+    </div>
+    <div class="bus-list-container">
+        <ul id="outbound-bus-list" class="bus-list"></ul>
+    </div>
+
+    <div class="bus-header" data-target="tonda-outbound-bus-list">
+        <h2>JR富田　→　関西大学</h2>
+    </div>
+    <div class="bus-list-container">
+        <ul id="tonda-outbound-bus-list" class="bus-list"></ul>
+    </div>
+
+    <div class="bus-header" data-target="tonda-inbound-bus-list">
+        <h2>関西大学　→　JR富田</h2>
+    </div>
+    <div class="bus-list-container">
+        <ul id="tonda-inbound-bus-list" class="bus-list"></ul>
+    </div>
+
+    <p id="update-message1"></p>
 
     <script src="script.js"></script>
 </body>
 </html>
+
