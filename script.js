@@ -58,7 +58,7 @@ function updateSchedule() {
 
     // 現在の時刻と曜日を表示
     document.getElementById("update-message").textContent = "ヘッダーを更新";
-    document.getElementById("current-time").textContent = `現在時刻: ${formatTime(currentMinutes)}`;
+    document.getElementById("current-time").textContent = "12時毎にヘッダーが入れ替わるよう変更";
     document.getElementById("day-of-week").textContent = ` ${["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"][dayOfWeek]}`;
 
     // 既存路線の時刻表
@@ -181,4 +181,5 @@ function updateBusList(elementId, busesToShow, allBuses) {
 // ページ読み込み時と1分ごとの更新
 window.onload = updateSchedule;
 setInterval(updateSchedule, 60000);
+
 
