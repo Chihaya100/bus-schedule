@@ -121,6 +121,64 @@ function updateBusList(elementId, busesToShow, allBuses) {
     };
 }
 
+(function () {
+  // 正午を境に入れ替える
+  const THRESHOLD_HOUR = 12;
+
+  // 正午以降に富田⇄関大の順番も入れ替えるか（trueで入れ替え）
+  const SWAP_TONDA_AFTER_NOON = true;
+
+  function getPairNodes(listId) {
+    // 見出し（.bus-header[data-target=...]）と、その直後の .bus-list-container をセットで返す
+    const header = document.querySelector(`.bus-header[data-target="${listId}"]`);
+    if (!header) return null;
+    const container = header.nextElementSibling?.matches('.bus-list-container')
+      ? header.nextElementSibling
+      : document.getElementById(listId)?.closest('.bus-list-container');
+    if (!container) return null;
+    return [header, container];
+  }
+
+  function renderOrder(orderIds) {
+    const wrap = document.getElementById('bus-sections');
+    if (!wrap) return;
+    const frag = document.createDocumentFragment();
+    orderIds.forEach(id => {
+      const pair = getPairNodes(id);
+      if (pair) pair.forEach(node => frag.appendChild(node));
+    });
+    // 既存の残り（order外の要素）があれば維持のため最後に足しておく
+    // （通常は上の4セットだけなのでこのままでOK）
+    wrap.appendChild(frag);
+  }
+
+  function reorderByTime(now = new Date()) {
+    const hour = now.getHours();
+    const isAfternoon = hour >= THRESHOLD_HOUR;
+
+    // 行き/帰り
+    const mainOrder = isAfternoon
+      ? ['outbound-bus-list', 'inbound-bus-list']   // 12時以降：帰り→行き
+      : ['inbound-bus-list', 'outbound-bus-list'];  // 12時前：行き→帰り
+
+    // 富田⇄関大（正午以降に入れ替える設定）
+    const tondaOrder = (SWAP_TONDA_AFTER_NOON && isAfternoon)
+      ? ['tonda-inbound-bus-list', 'tonda-outbound-bus-list']   // 12時以降：関大→JR富田 を上に
+      : ['tonda-outbound-bus-list', 'tonda-inbound-bus-list'];  // 12時前：JR富田→関大 を上に
+
+    renderOrder([...mainOrder, ...tondaOrder]);
+  }
+
+  // 初期化
+  window.addEventListener('DOMContentLoaded', () => {
+    reorderByTime();
+
+    // 毎分チェック（正午をまたいだら自動で入れ替え）
+    setInterval(reorderByTime, 60 * 1000);
+  });
+})();
+
 // ページ読み込み時と1分ごとの更新
 window.onload = updateSchedule;
 setInterval(updateSchedule, 60000);
+
